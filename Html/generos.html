@@ -22,13 +22,23 @@
             </nav>
         </div>
     </header>
-    <div class="generos" >
-        <label  class="title__generos">Genero</label>
-        <label for="genero" class="genero" id="masculino" >masculino</label>
-        <input type="radio" name="genero" value="1" required  >
-        <label for="genero" id="femenino">femenino</label>
-        <input type="radio"  name="genero" value="2" required >
+    <div class="cajita">
+        <div class= "content__inputs" >
+            <label  class="radio__title"> Selecciona  el Genero:</label>
+            <div>
+            <div class="radios__formulario">
+                <label for="masculino"  >masculino</label>
+                <input type="radio" name="genero" value="1" id="masculino"  required  >
+            </div>
+            <div class="radios__formulario">
+                <label for="femenino" >femenino</label>
+                <input type="radio"  name="genero" value="2"id="femenino" required >
+            </div>
+       </div>
+        <button type="submit" id="btn_validar" class="form__buton">Guardar</button>
     </div>
+    </div>
+    
     
 </body>
 </html>
