@@ -8,9 +8,9 @@
      <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 <body>
-     <div class="header__bloque">
+    <div class="header__bloque">
     </div>
-    <header class="header">
+ <header class="header">
         <div class="content__header">
             <nav class="navega__links">
                 <ul class="navega__link">
@@ -21,58 +21,65 @@
                 </ul>
             </nav>
         </div>
-    </header>
-     <div class="container">
-          <div class="formulario">
-            <h2 class="center">Ingrese su datos de usuario</h2>
-            <form action="#" novalidate>
-              <div><input  type="text" name="nombre" placeholder="Nombre" required></div>
-              <div> <input  type="text" name="apellido" placeholder="Apellido" required></div>
-             <div> <input  type="tel"  name="Telefono"  placeholder="Telefono" required></div>
-             <div>
-              <select name="ciudad" id="ciudad" class="ciudades">
-                <option >selecciona</option>
-                <option value="1">Bucaramanga </option>
-                <option value="2">giron</option>
-                <option value="3">florida</option>
-              </select>
+  </header>
+    <h2 class="formulario__title">Ingrese su datos </h2>
+    <div class="content__form">
+        <form action="#" novalidate>
+                <div class="content__inputs">
+                    <div><input  type="text" name="nombre" placeholder="Nombre" class="campo_input" required></div>
+                    <div> <input  type="text" name="apellido" placeholder="Apellido"class="campo_input" required></div>
+                    <div> <input  type="tel"  name="Telefono"  placeholder="Telefono" class="campo_input"required></div>
+                    <div><input  type="text" name="Documento" placeholder="Documento"class="campo_input" required></div>
+                    <div> <input  type="text" name="usuario" placeholder="Usuario"class="campo_input" required></div>
+                    <div><input  type="password" name="contrasena" placeholder="Contraseña" class="campo_input"required></div>
+                </div>
+              <div class="content__inputs">
+                <select name="ciudad" id="ciudad" class="campos_seleccion">
+                    <option >selecciona</option>
+                    <option value="1">Bucaramanga </option>
+                    <option value="2">giron</option>
+                    <option value="3">florida</option>
+                </select>
              </div>
-             <div><input  type="number" name="Documento" placeholder="Documento" required></div>
-              <div> <input  type="text" name="usuario" placeholder="Usuario" required></div>
-             <div><input  type="password" name="contrasena" placeholder="Contraseña" required></div>
-             <div class="generos" >
-               <label  class="title__generos">Genero</label>
-              <label for="genero" class="genero" id="masculino" >masculino</label>
-              <input type="radio" name="genero" value="1" required  >
-              <label for="genero" id="femenino">femenino</label>
-              <input type="radio"  name="genero" value="2" required >
+             <div class= "content__inputs" >
+                    <label  class="radio__title"> Selecciona  el Genero:</label>
+                    <div>
+                        <div class="radios__formulario">
+                         <label for="masculino"  >masculino</label>
+                          <input type="radio" name="genero" value="1" id="masculino"  required  >
+                        </div>
+                        <div class="radios__formulario">
+                            <label for="femenino" >femenino</label>
+                            <input type="radio"  name="genero" value="2"id="femenino" required >
+                        </div>
+                    </div>
              </div>
-             <div class="habilidades">
-              <label for="">habilidades</label>
-              <label for="js">
-                <input type="checkbox" id="js" name="habilidades[]" value="1" required>
-                Js</label>
-                <label for="mysql">
-                <input type="checkbox" id="mysql" name="habilidades[]" value="2" required>
-                mysql</label>
-                <label for="python">
-                <input type="checkbox" id="python" name="habilidades[]" value="3" required>
-                python</label>
-                <label for="html">
-                <input type="checkbox" id="html" name="habilidades[]" value="4" required>
-                html</label>
-                <label for="php">
-                <input type="checkbox" id="php" name="habilidades[]" value="5" required>
-                php</label>
+             <div class=" content__inputs">
+              <label for=""  class="check__title" >Lenguajes</label>
+                <div class="content__check">
+                    <label for="js">
+                    <input type="checkbox" class="checkbox__lenguaje" id="js" name="habilidades[]" value="1" required>
+                    Js</label>
+                    <label for="mysql">
+                    <input type="checkbox" class="checkbox__lenguaje"id="mysql" name="habilidades[]" value="2" required>
+                    mysql</label>
+                    <label for="python">
+                    <input type="checkbox" class="checkbox__lenguaje"id="python" name="habilidades[]" value="3" required>
+                    python</label>
+                    <label for="html">
+                    <input type="checkbox"class="checkbox__lenguaje" id="html" name="habilidades[]" value="4" required>
+                    html</label>
+                    <label for="php">
+                    <input type="checkbox"class="checkbox__lenguaje" id="php" name="habilidades[]" value="5" required>
+                    php</label>
+                </div>
              </div>
-             <div>
-              <input type="checkbox" name="permisos" id="politicas" class="politicas"></input>
-              <label for="politicas">politicas</label>
-
-             </div>
-              <button type="submit" id="btn_validar">Validar</button>
-            </form>
-          </div>
-        </div>
+             <div class="content__politicas">
+                <input type="checkbox" name="permisos" id="politicas" > </input>
+                <label for="politicas">Acepta los terminos y condiciones</label>
+             </div >
+               <button type="submit" id="btn_validar" class="form__buton">Guardar</button>
+        </form>
+    </div>
 </body>
 </html>
