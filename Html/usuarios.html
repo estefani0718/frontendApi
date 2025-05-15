@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="/estilos/style.css">
+     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+</head>
+<body>
+     <div class="header__bloque">
+    </div>
+    <header class="header">
+        <div class="content__header">
+            <nav class="navega__links">
+                <ul class="navega__link">
+                    <li><a href="ciudades.html" class="links">Ciudades</a></li>
+                    <li><a href="generos.html" class="links">Generos</a></li>
+                    <li><a href="habilidades.html " class="links">habilidades</a></li>
+                    <li><a href="usuarios.html" class="links">Usuario</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+     <div class="container">
+          <div class="formulario">
+            <h2 class="center">Ingrese su datos de usuario</h2>
+            <form action="#" novalidate>
+              <div><input  type="text" name="nombre" placeholder="Nombre" required></div>
+              <div> <input  type="text" name="apellido" placeholder="Apellido" required></div>
+             <div> <input  type="tel"  name="Telefono"  placeholder="Telefono" required></div>
+             <div>
+              <select name="ciudad" id="ciudad" class="ciudades">
+                <option >selecciona</option>
+                <option value="1">Bucaramanga </option>
+                <option value="2">giron</option>
+                <option value="3">florida</option>
+              </select>
+             </div>
+             <div><input  type="number" name="Documento" placeholder="Documento" required></div>
+              <div> <input  type="text" name="usuario" placeholder="Usuario" required></div>
+             <div><input  type="password" name="contrasena" placeholder="Contraseña" required></div>
+             <div class="generos" >
+               <label  class="title__generos">Genero</label>
+              <label for="genero" class="genero" id="masculino" >masculino</label>
+              <input type="radio" name="genero" value="1" required  >
+              <label for="genero" id="femenino">femenino</label>
+              <input type="radio"  name="genero" value="2" required >
+             </div>
+             <div class="habilidades">
+              <label for="">habilidades</label>
+              <label for="js">
+                <input type="checkbox" id="js" name="habilidades[]" value="1" required>
+                Js</label>
+                <label for="mysql">
+                <input type="checkbox" id="mysql" name="habilidades[]" value="2" required>
+                mysql</label>
+                <label for="python">
+                <input type="checkbox" id="python" name="habilidades[]" value="3" required>
+                python</label>
+                <label for="html">
+                <input type="checkbox" id="html" name="habilidades[]" value="4" required>
+                html</label>
+                <label for="php">
+                <input type="checkbox" id="php" name="habilidades[]" value="5" required>
+                php</label>
+             </div>
+             <div>
+              <input type="checkbox" name="permisos" id="politicas" class="politicas"></input>
+              <label for="politicas">politicas</label>
+
+             </div>
+              <button type="submit" id="btn_validar">Validar</button>
+            </form>
+          </div>
+        </div>
+</body>
+</html>

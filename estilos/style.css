@@ -1,0 +1,56 @@
+@import url(root.css);
+@import url(ciudades.css);
+*{
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Jua', sans-serif;
+     
+}
+body{
+    background-color:var(--color__principal) ;
+     font-family: 'Jua', sans-serif;
+}
+.header__bloque{
+    width: 100%;
+    background-color: #666;
+    height: 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.header{
+    width: 100%;
+    background-color: var(--color__header);
+    height: 90px;
+    display: flex;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.content__header{
+    display: flex;
+    width: 50%;
+    margin:0 auto;
+}
+.navega__links{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    
+}
+.navega__link{
+   list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+}
+.links{
+    text-decoration: none;
+    font-size: 2vw;
+}
+.content__textos{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
