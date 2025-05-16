@@ -46,6 +46,16 @@ export const campo = (event) => {
     }
   }
 };
+// export const politicas = () => {
+//   addEventListener("DOMContentLoaded", (event) => {
+//   if (!condicones.checked) {
+//      boton.setAttribute("disable","")
+//     }
+//   else {
+//      boton.removeAttribute("disable")
+//     }
+// })
+// }
 
 // validacion del formulario usuarios
 export const validarForm = (e) => {
@@ -81,31 +91,41 @@ export const validarForm = (e) => {
 
   
   campos.forEach((dato) => {
-    switch (dato.tagName) {
-      case "input":
-        if (campo.value == "") {
-          campo.classList.add("input__border");
-          let span = document.createElement("span");
-          span.classList.add("span");
-          span.textContent = "llenar el campo se encuentra vacio  ";
-          campo.insertAdjacentElement("afterend", span);
-        } else {
-          datosUsuario[dato.name] = dato.value;
-        }
-        break;
+      console.log('dato',dato);
       
-      case "select":
-        if (campo.selectedIndex == 0) {
-          campo.classList.add("input__border");
-          let span = document.createElement("span");
-          span.classList.add("span");
-          span.textContent = "llenar el campo se encuentra vacio  ";
-          campo.insertAdjacentElement("afterend", span);
+     switch (dato.tagName) {
+       case "INPUT":
+         if (dato.type == "text" || dato.type == "tel" || dato.type == "password") {
+           if (dato.value == "") {
+             dato.classList.add("input__border");
+             let span = document.createElement("span")
+             span.classList.add("span")
+             span.textContent = `Debes llenar el campo ${dato.name} que se encuentra vacio`;
+             dato.insertAdjacentElement("afterend", span)
+           }
+          
+         }
+         else {
+             
+           datosUsuario[dato.name] = dato.value;
+         }
+         break;
+     
+       case "SELECT":
+        if (dato.selectedIndex == 0 && dato.selectedIndex <3) {
+          dato.classList.add("input__border")
+          let span = document.createElement("span")
+          span.classList.add("span")
+          span.textContent = `Debes llenar el campo ${dato.name} que se encuentra vacio`;
+          dato.insertAdjacentElement("afterend", span);
+        }
+         else {
+          datosUsuario[dato.name] = dato.selectedIndex;
         }
         break;
-    }
-   
-  });
-  console.log(datosUsuario);
+     }
+    
+    });
   
 }
+

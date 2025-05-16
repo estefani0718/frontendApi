@@ -26,3 +26,12 @@ documento.addEventListener("blur", campo);
 usuario.addEventListener("blur", campo);
 contrasena.addEventListener("blur", campo);
 codiciones.addEventListener("blur", campo);
+
+codiciones.addEventListener("DOMContentLoaded", (event) => {
+  if (!codiciones.checked) {
+    boton.setAttribute("disable", "")
+  }
+  else {
+    boton.removeAttribute("disable")
+  }
+})
