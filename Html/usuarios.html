@@ -28,13 +28,13 @@
                 <div class="content__inputs">
                     <div><input  type="text" name="nombre" placeholder="Nombre" class="campo_input" required></div>
                     <div> <input  type="text" name="apellido" placeholder="Apellido"class="campo_input" required></div>
-                    <div> <input  type="tel"  name="Telefono"  placeholder="Telefono" class="campo_input"required></div>
-                    <div><input  type="text" name="Documento" placeholder="Documento"class="campo_input" required></div>
+                    <div> <input  type="tel"  name="telefono"  placeholder="Telefono" class="campo_input"required></div>
+                    <div><input  type="text" name="documento" placeholder="Documento"class="campo_input" required></div>
                     <div> <input  type="text" name="usuario" placeholder="Usuario"class="campo_input" required></div>
                     <div><input  type="password" name="contrasena" placeholder="Contraseña" class="campo_input"required></div>
                 </div>
               <div class="content__inputs">
-                <select name="ciudad" id="ciudad" class="campos_seleccion">
+                <select name="ciudades" id="ciudades" class="campos_seleccion">
                     <option >selecciona</option>
                     <option value="1">Bucaramanga </option>
                     <option value="2">giron</option>
@@ -75,11 +75,12 @@
                 </div>
              </div>
              <div class="content__politicas">
-                <input type="checkbox" name="permisos" id="politicas" > </input>
-                <label for="politicas">Acepta los terminos y condiciones</label>
+                <input type="checkbox" name="permisos" id="permisos" > </input>
+                <label for="permisos">Acepta los terminos y condiciones</label>
              </div >
-               <button type="submit" id="btn_validar" class="form__buton">Guardar</button>
+               <button type="submit" id="btn_guardar" class="form__buton">Guardar</button>
         </form>
     </div>
+    <script type="module" src="/validaciones/usuarios.js"></script>
 </body>
 </html>
