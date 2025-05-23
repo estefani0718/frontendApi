@@ -22,23 +22,29 @@
             </nav>
         </div>
     </header>
-    <div class="cajita">
-        <div class= "content__inputs" >
-            <label  class="radio__title"> Selecciona  el Genero:</label>
-            <div>
-            <div class="radios__formulario">
-                <label for="masculino"  >masculino</label>
-                <input type="radio" name="genero" value="1" id="masculino"  required  >
-            </div>
-            <div class="radios__formulario">
-                <label for="femenino" >femenino</label>
-                <input type="radio"  name="genero" value="2"id="femenino" required >
-            </div>
+
+    <form action="#">
+        <div class="cajita">
+                <div class= "content__inputs" >
+                    <label  class="radio__title"> Selecciona  el Genero:</label>
+                    <div>
+                    <div class="radios__formulario">
+                        <label for="masculino"  >masculino</label>
+                        <input type="radio" name="genero" value="1" id="masculino"  required  >
+                    </div>
+                    <div class="radios__formulario">
+                        <label for="femenino" >femenino</label>
+                        <input type="radio"  name="genero" value="2"id="femenino" required >
+                    </div>
+                    <div id="error-genero" class="mensaje-error"></div>
+              </div>
+            
+            <button type="submit" id="btn_validar" class="form__buton">Guardar</button>
        </div>
-        <button type="submit" id="btn_validar" class="form__buton">Guardar</button>
-    </div>
-    </div>
+    </form>
+   
+
     
-    
+    <script type="module" src="/validaciones/generos.js"></script>
 </body>
 </html>
