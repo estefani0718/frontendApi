@@ -46,86 +46,69 @@ export const campo = (event) => {
     }
   }
 };
-// export const politicas = () => {
-//   addEventListener("DOMContentLoaded", (event) => {
-//   if (!condicones.checked) {
-//      boton.setAttribute("disable","")
-//     }
-//   else {
-//      boton.removeAttribute("disable")
-//     }
-// })
-// }
-
-// validacion del formulario usuarios
 export const validarForm = (e) => {
   e.preventDefault();
-  // se crea el objeto el cual almacenara la informacion del usuario
   const datosUsuario = {};
 
-  const campos = [...e.target].filter((hijos) => {
-    return hijos.hasAttribute("required");
-  });
-
-  const radio = [...campos].filter((elementos) => {
-    return elementos.type === "radio";
-  });
-  const campo__radio = radio.find((radio) => radio.checked) || [];
-  //
-  if (campo__radio.length == 0) {
-    datosUsuario[radio[0].name] = "";
-  } else {
-    datosUsuario[campo__radio.name] = campo__radio.value;
-  }
-  const checkbox = [...campos].filter(
-    (elemento) => elemento.type == "checkbox"
+  const campos = [...e.target].filter((hijo) =>
+    hijo.hasAttribute("required")
   );
-  //
-  const campo__checkbox = checkbox.filter((e) => e.checked);
-  //
-  if (campo__checkbox.length < 3) {
-    datosUsuario[[0].name] == "";
-  } else {
-    datosUsuario[checkbox[0].name] = [...campo__checkbox].map((e) => e.value);
-  }
 
-  
+  // Validación de INPUT y SELECT
   campos.forEach((dato) => {
-      console.log('dato',dato);
-      
-     switch (dato.tagName) {
-       case "INPUT":
-         if (dato.type == "text" || dato.type == "tel" || dato.type == "password") {
-           if (dato.value == "") {
-             dato.classList.add("input__border");
-             let span = document.createElement("span")
-             span.classList.add("span")
-             span.textContent = `Debes llenar el campo ${dato.name} que se encuentra vacio`;
-             dato.insertAdjacentElement("afterend", span)
-           }
-          
-         }
-         else {
-             
-           datosUsuario[dato.name] = dato.value;
-         }
-         break;
-     
-       case "SELECT":
-        if (dato.selectedIndex == 0 && dato.selectedIndex <3) {
-          dato.classList.add("input__border")
-          let span = document.createElement("span")
-          span.classList.add("span")
-          span.textContent = `Debes llenar el campo ${dato.name} que se encuentra vacio`;
-          dato.insertAdjacentElement("afterend", span);
-        }
-         else {
-          datosUsuario[dato.name] = dato.selectedIndex;
+    switch (dato.tagName) {
+      case "INPUT":
+        if (["text", "tel", "password"].includes(dato.type)) {
+          if (dato.value.trim() === "") {
+            dato.classList.add("input__border");
+            let span = document.createElement("span");
+            span.classList.add("span");
+            span.textContent = `Debes llenar el campo ${dato.name} que se encuentra vacío`;
+            dato.insertAdjacentElement("afterend", span);
+          } else {
+            datosUsuario[dato.name] = dato.value;
+          }
+        } else if (dato.type !== "radio" && dato.type !== "checkbox") {
+          // Otros inputs (email, etc.)
+          datosUsuario[dato.name] = dato.value;
         }
         break;
-     }
-    
-    });
-  
-}
 
+      case "SELECT":
+        if (dato.selectedIndex === 0) {
+          dato.classList.add("input__border");
+          let span = document.createElement("span");
+          span.classList.add("span");
+          span.textContent = `Debes seleccionar una opción en ${dato.name}`;
+          dato.insertAdjacentElement("afterend", span);
+        } else {
+          datosUsuario[dato.name] = dato.value;
+        }
+        break;
+    }
+  });
+
+  //se capturan los radios 
+
+  const radios = campos.filter((el) => el.type === "radio");
+  const radioSeleccionado = radios.find((r) => r.checked);
+  if (radioSeleccionado) {
+    datosUsuario[radioSeleccionado.name] = radioSeleccionado.value;
+  } else if (radios.length > 0) {
+    datosUsuario[radios[0].name] = "";
+  }
+
+   // se capturan los chechboxs y se filtran
+  const checks = campos.filter((el) => el.type === "checkbox");
+    //se filtran para saber si estan chequiados 
+  const checksMarcados = checks.filter((ch) => ch.checked);
+  // se verifica si hay menos de tres de lo contrario retornara el objeto con su valor 
+  if (checksMarcados.length < 3 && checks.length > 0) {
+    datosUsuario[checks[0].name] = "";
+  } else if (checks.length > 0) {
+    datosUsuario[checks[0].name] = checksMarcados.map((ch) => ch.value);
+  }
+
+  console.log(datosUsuario);
+  return datosUsuario;
+};

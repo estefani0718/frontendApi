@@ -34,11 +34,12 @@
                     <div><input  type="password" name="contrasena" placeholder="Contraseña" class="campo_input"required></div>
                 </div>
               <div class="content__inputs">
+                  <p>selecciona tu ciudad :</p>
                 <select name="ciudades" id="ciudades" class="campos_seleccion">
                     <option >selecciona</option>
-                    <option value="1">Bucaramanga </option>
-                    <option value="2">giron</option>
-                    <option value="3">florida</option>
+                    <option required value="1">Bucaramanga </option>
+                    <option  required value="2">giron</option>
+                    <option  required value="3">florida</option>
                 </select>
              </div>
              <div class= "content__inputs" >
@@ -58,24 +59,24 @@
               <label for=""  class="check__title" >Lenguajes</label>
                 <div class="content__check">
                     <label for="js">
-                    <input type="checkbox" class="checkbox__lenguaje" id="js" name="habilidades[]" value="1" required>
+                    <input type="checkbox" class="checkbox__lenguaje" id="js" name="habilidades" value="1" required>
                     Js</label>
                     <label for="mysql">
-                    <input type="checkbox" class="checkbox__lenguaje"id="mysql" name="habilidades[]" value="2" required>
+                    <input type="checkbox" class="checkbox__lenguaje"id="mysql" name="habilidades" value="2" required>
                     mysql</label>
                     <label for="python">
-                    <input type="checkbox" class="checkbox__lenguaje"id="python" name="habilidades[]" value="3" required>
+                    <input type="checkbox" class="checkbox__lenguaje"id="python" name="habilidades" value="3" required>
                     python</label>
                     <label for="html">
-                    <input type="checkbox"class="checkbox__lenguaje" id="html" name="habilidades[]" value="4" required>
+                    <input type="checkbox"class="checkbox__lenguaje" id="html" name="habilidades" value="4" required>
                     html</label>
                     <label for="php">
-                    <input type="checkbox"class="checkbox__lenguaje" id="php" name="habilidades[]" value="5" required>
+                    <input type="checkbox"class="checkbox__lenguaje" id="php" name="habilidades" value="5" required>
                     php</label>
                 </div>
              </div>
              <div class="content__politicas">
-                <input type="checkbox" name="permisos" id="permisos" > </input>
+                <input type="checkbox" name="permisos" id="permisos"  required> </input>
                 <label for="permisos">Acepta los terminos y condiciones</label>
              </div >
                <button type="submit" id="btn_guardar" class="form__buton">Guardar</button>
