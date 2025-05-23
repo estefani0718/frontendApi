@@ -160,20 +160,11 @@ body{
     margin: 0 auto;
     margin-top: 20px;
 }
-.input__border {
-  border: 2px solid red;
+.input__border{
+  color: red;
 }
-
-.span {
-  color:red;
-  font-size: 14px;
-  margin-top: 5px;
-  display: block;
-  margin-bottom: 5px;
-}
-.tabla{
-  width: 50%;
-  border: 1px solid #666;
- margin: 0 auto;
- margin-top: 1%;
+.span{
+  text-align: center;
+  margin-left: 20px;
+  color: var(--color__principal);
 }

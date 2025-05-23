@@ -1,28 +1,19 @@
+import { validarText} from "./modulos.js";
+import { validarForm ,campo,crearTablas,get} from "./modulos.js";
+const formulario = document.querySelector("form");
+const ciudad = document.querySelector('[name="ciudad"]');
 
-  document.getElementById("btn_validar").addEventListener("click", function (e) {
-    e.preventDefault(); // Evita que el formulario se envíe
+formulario.addEventListener( "submit",validarForm)
+ciudad.addEventListener("keydown", validarText);
+ciudad.addEventListener("blur", campo);
 
-    const select = document.getElementById("ciudades");
+const ciudades = await get("ciudades");
+crearTablas(["id", "ciudad"], ciudades.data);
 
-    // Elimina mensaje de error anterior si existe
-    const mensajeAnterior = document.querySelector("#mensaje-error-ciudad");
-    if (mensajeAnterior) {
-      mensajeAnterior.remove();
-    }
-
-    // Validar que no esté en "selecciona"
-    if (select.selectedIndex === 0) {
-      select.classList.add("input__border");
-
-      const span = document.createElement("span");
-      span.id = "mensaje-error-ciudad";
-      span.className = "span";
-      span.textContent = "Debes seleccionar una ciudad";
-
-      // Insertar el span después del select
-      select.insertAdjacentElement("afterend", span);
-    } else {
-      select.classList.remove("input__border");
-      alert("Ciudad válida seleccionada");
-    }
-  });
+export const validarText = (event) => {
+  let letra = event.key;
+  const regexTexto = /^[a-zA-Z]+$/;
+  if (!regexTexto.test(letra)) {
+    event.preventDefault();
+  }
+};

@@ -1,35 +1,12 @@
-document.getElementById("formulario-genero").addEventListener("submit", function (e) {
-  e.preventDefault();
 
-  // Seleccionamos todos los radios
-  const radios = document.querySelectorAll('input[name="genero"]');
-  const campoRadio = [...radios].find(radio => radio.checked);
-  const primerRadio = radios[0];
+import { validarText} from "./modulos";
+import { validarForm ,campo,get,crearTablas,validarCamposMinimos} from "./modulos";
+const formulario = document.querySelector("form");
+const genero = document.querySelector('[name="genero"]');
+genero.addEventListener("blur",validarCamposMinimos)
+genero.addEventListener("keydown", validarText);
+formulario.addEventListener( "submit",validarForm)
+genero.addEventListener("blur", campo);
 
-  // Limpiar errores anteriores
-  radios.forEach(radio => {
-    radio.classList.remove("input__border");
-  });
-
-  if (primerRadio.nextElementSibling && primerRadio.nextElementSibling.classList.contains("span")) {
-    primerRadio.nextElementSibling.remove();
-  }
-
-  // Validar si no se seleccionó ninguno
-  if (!campoRadio) {
-    // Agregar clase de error
-    primerRadio.classList.add("input__border");
-
-    // Crear mensaje de error
-    const span = document.createElement("span");
-    span.classList.add("span");
-    span.textContent = "Debes seleccionar un género";
-
-    // Insertarlo justo después del primer radio
-    primerRadio.insertAdjacentElement("afterend", span);
-    return;
-  }
-
-  // Si se seleccionó uno, puedes continuar con lo que sigue...
-  console.log("Género seleccionado:", campoRadio.value);
-});
+const generos = await get("generos");
+// crearTablas(["id","genero",generos.data])

@@ -37,3 +37,5 @@ codiciones.addEventListener("DOMContentLoaded", (event) => {
     boton.removeAttribute("disable")
   }
 })
+
+

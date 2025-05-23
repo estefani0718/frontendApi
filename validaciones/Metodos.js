@@ -1,1 +1,0 @@
-/**aqui estaran get, push y delete */

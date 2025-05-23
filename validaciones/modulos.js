@@ -46,6 +46,8 @@ export const campo = (event) => {
     }
   }
 };
+
+
 export const validarForm = (e) => {
   e.preventDefault();
   const datosUsuario = {};
@@ -76,11 +78,13 @@ export const validarForm = (e) => {
 
       case "SELECT":
         if (dato.selectedIndex === 0) {
-          dato.classList.add("input__border");
-          let span = document.createElement("span");
+            const contenedor = document.querySelector(".content__check");
+
+          const span = document.createElement("span");
           span.classList.add("span");
-          span.textContent = `Debes seleccionar una opción en ${dato.name}`;
-          dato.insertAdjacentElement("afterend", span);
+          span.textContent = `Debes seleccionar al menos  3 en lenguaje`;
+
+          contenedor.insertAdjacentElement("afterend", span);
         } else {
           datosUsuario[dato.name] = dato.value;
         }
@@ -96,6 +100,8 @@ export const validarForm = (e) => {
     datosUsuario[radioSeleccionado.name] = radioSeleccionado.value;
   } else if (radios.length > 0) {
     datosUsuario[radios[0].name] = "";
+    
+  
   }
 
    // se capturan los chechboxs y se filtran
@@ -105,10 +111,97 @@ export const validarForm = (e) => {
   // se verifica si hay menos de tres de lo contrario retornara el objeto con su valor 
   if (checksMarcados.length < 3 && checks.length > 0) {
     datosUsuario[checks[0].name] = "";
+    const contenedor = document.querySelector(".content__check");
+
+    const span = document.createElement("span");
+    span.classList.add("span");
+    span.textContent = `Debes seleccionar al menos  3 en lenguaje`;
+
+    contenedor.insertAdjacentElement("afterend", span);
   } else if (checks.length > 0) {
     datosUsuario[checks[0].name] = checksMarcados.map((ch) => ch.value);
   }
 
   console.log(datosUsuario);
   return datosUsuario;
+};
+// peticion de get ...
+
+const url = "http://localhost:3000";
+
+ export async function get(endpoint) {
+  try {
+    const peticion = await fetch(`${url}/${endpoint}`)
+    return await peticion.json();
+  } catch (error) {
+    console.error("Error mio",error)
+  }
+  return;
+}
+
+
+
+
+export const validarCamposMinimos = (event) => {
+  let minimo= event.target.getAttribute("min");
+  if (event.target.value.length < minimo) {
+    event.target.classList.add("input__border")
+    if (event.target.nextElementSibling) event.target.nextElementSibling.remove();
+    let afterend = document.createElement('span');
+    afterend.textContent = `El campo ${event.target.getAttribute("name")} debe tener minimo ${min} caracteres`
+    event.target.insertAdjacentElement('afterend', afterend);
+    return false;
+  } else return true;
+}
+
+
+// creacion de tablas
+export const crearTablas = (data, datosUsuario) => {
+  if (datosUsuario.length > 0) {
+    const body = document.querySelector("body");
+    const tabla = document.createElement("table");
+    tabla.classList.add("tabla");
+
+    // Encabezado
+    const encabezado = document.createElement("thead");
+    const raizEncabezado = document.createElement("tr");
+    datosUsuario.forEach(nombre => {
+      const campo = document.createElement("th");
+      campo.textContent = nombre;
+      raizEncabezado.append(campo);
+    });
+    encabezado.append(raizEncabezado);
+    tabla.append(encabezado);
+
+    // Cuerpo
+    const cuerpo = document.createElement("tbody");
+    data.forEach(reLenguaje => {
+      const raiz = document.createElement("tr");
+
+      Object.keys(reLenguaje).forEach(clave => {
+        const nuevoCampo = document.createElement("td");
+        nuevoCampo.textContent = reLenguaje[clave];
+        raiz.append(nuevoCampo);
+      });
+
+      // Botones
+      const opcion = document.createElement("td");
+      const contenBotones = document.createElement("div");
+      const botonEditar = document.createElement("button");
+      const botonEliminar = document.createElement("button");
+
+      botonEditar.textContent = "Editar";
+      botonEliminar.textContent = "Eliminar";
+
+      contenBotones.append(botonEditar);
+      contenBotones.append(botonEliminar);
+      opcion.append(contenBotones);
+      raiz.append(opcion);
+
+      cuerpo.append(raiz);
+    });
+
+    tabla.append(cuerpo);
+    body.append(tabla);
+  }
 };
